@@ -3,12 +3,26 @@
 using namespace std;
 int main(){
     
-    Hero S(70,'C');
-    S.print();
+    
     //cout<<"Health: "<<S<<endl;
     //creation of copy of the object S to R
-    Hero R(S);
-    R.print();
+    Hero h1;
+    h1.setHealth(120);
+    h1.setLevel('z');
+    char name[7]="Sachin";
+    h1.setName(name);
+    //getting things done
+    h1.getHealth();
+    h1.getLevel();
+    h1.print();
+
+    Hero h2(h1);
+    h2.print();
+    //shallow copy
+    h1.name[0]='K';
+    h1.print();
+    h2.print();
+
    
 
     /*Hero h1;
