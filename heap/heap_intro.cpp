@@ -74,6 +74,27 @@ class heap{
 
 };
 
+void heapify(int arr[], int size, int i){
+    int largest = i;
+    int left = 2*i;
+    int right = 2*i+1;
+
+    if(left<size && arr[largest] <arr[left]){
+        //max heap
+        largest = left;
+    }
+    if(right < size && arr[largest] < arr[right]){
+        largest = right;
+    }
+
+    //checking if there is any change
+    if(largest != i){
+        swap(arr[i],arr[largest]);
+        //check remaining nodes
+        heapify(arr,size, largest);
+    }
+}
+
 int main(){
     heap h;
     h.insert(50);
@@ -85,6 +106,18 @@ int main(){
     h.print();
     h.deleteFromHeap();
     h.print();
+
+    int arr[6] = {-1, 54,53,52, 55, 50};
+    int n = 5;
+    for(int i=n/2;i>0;i--){
+        heapify(arr,n,i);
+    }
+
+    cout<<"printing array after heapify"<<endl;
+    for(int i=1;i<=n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
 
     return 0;
 }
